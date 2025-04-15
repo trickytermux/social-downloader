@@ -35,9 +35,10 @@ case $format in
     yt-dlp -f best "$url"
     ;;
   2)
-    echo "Downloading audio only (MP3)..."
-    yt-dlp -x --audio-format mp3 --ffmpeg-location "$(which ffmpeg)" "$url"
-    ;;
+  echo "Downloading audio only (MP3)..."
+  ffmpeg_path=$(which ffmpeg)
+  yt-dlp --extract-audio --audio-format mp3 --ffmpeg-location "$ffmpeg_path" "$url"
+  ;;
   *)
     echo "Invalid choice!"
     ;;
