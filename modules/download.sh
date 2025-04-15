@@ -2,12 +2,19 @@
 
 platform=$1
 
-# Install dependencies
+# Install yt-dlp if missing
 if ! command -v yt-dlp &>/dev/null; then
-    echo "Installing yt-dlp and dependencies..."
-    pkg install -y python ffmpeg
+    echo "Installing yt-dlp..."
+    pkg install -y python
     pip install yt-dlp
 fi
+
+# Install ffmpeg (also provides ffprobe) if missing
+if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
+    echo "Installing ffmpeg..."
+    pkg install -y ffmpeg
+fi
+
 
 # Check and install ffmpeg if missing
 if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
