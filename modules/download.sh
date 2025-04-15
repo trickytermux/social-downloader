@@ -2,11 +2,17 @@
 
 platform=$1
 
-# Install yt-dlp if not already installed
+# Install dependencies
 if ! command -v yt-dlp &>/dev/null; then
     echo "Installing yt-dlp and dependencies..."
     pkg install -y python ffmpeg
     pip install yt-dlp
+fi
+
+# Ensure ffmpeg is available
+if ! command -v ffmpeg &>/dev/null; then
+    echo "Installing ffmpeg..."
+    pkg install -y ffmpeg
 fi
 
 echo "Paste the $platform video URL:"
@@ -22,8 +28,8 @@ case $format in
     yt-dlp -f best "$url"
     ;;
   2)
-    echo "Downloading audio only..."
-    yt-dlp -x --audio-format mp3 "$url"
+    echo "Downloading audio only (MP3)..."
+    yt-dlp -x --audio-format mp3 --ffmpeg-location "$(which ffmpeg)" "$url"
     ;;
   *)
     echo "Invalid choice!"
