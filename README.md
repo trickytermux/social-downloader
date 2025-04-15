@@ -79,7 +79,7 @@ Pull requests are welcome! If you'd like to improve this tool or suggest new fea
 
 ---
 
-# Support U+1FA77
+# Support ♥️
 
 If you face any issues or need help:
 
