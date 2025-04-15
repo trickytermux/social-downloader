@@ -79,23 +79,23 @@ Pull requests are welcome! If you'd like to improve this tool or suggest new fea
 
 ---
 
-**Support 🩷**
+# Support U+1FA77
 
 If you face any issues or need help:
 
 Open an issue on the GitHub repo.
 
-Contact me via GitHub: @trickytermux
+Contact me via GitHub: [@trickytermux](https://github.com/trickytermux)
 
 
 
 ---
 
-License
+# License
 
 This project is licensed under the [MIT License](LICENSE.md).
 
 
 ---
 
-Made with love in Termux by @trickytermux
+Made with love in Termux by[@trickytermux](https://github.com/trickytermux)
