@@ -15,33 +15,22 @@ if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
     pkg install -y ffmpeg
 fi
 
-
-# Check and install ffmpeg if missing
-if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
-    echo "Installing ffmpeg..."
-    pkg install -y ffmpeg
-fi
-
+# Prompt for URL
 echo "Paste the $platform video URL:"
 read url
-echo "Select format:"
-echo "1) Best Video"
-echo "2) Audio Only (MP3)"
-read -p "Your choice: " format
 
-case $format in
-  1)
-    echo "Downloading best video..."
-    yt-dlp -f best "$url"
-    ;;
-  2)
-  echo "Downloading audio only (MP3)..."
-  ffmpeg_path=$(which ffmpeg)
-  yt-dlp --extract-audio --audio-format mp3 --ffmpeg-location "$ffmpeg_path" "$url"
-  ;;
-  *)
-    echo "Invalid choice!"
-    ;;
-esac
+# Fetch and show available video formats
+echo
+echo "Fetching available video formats..."
+yt-dlp -F "$url"
 
-echo "Done!"
+# Let user choose a format code
+echo
+read -p "Enter the format code you want to download (e.g., 137+140 for best video+audio): " format_code
+
+# Download the selected format
+echo "Downloading video with format code: $format_code..."
+yt-dlp -f "$format_code" "$url"
+
+echo
+echo "Download complete!"
