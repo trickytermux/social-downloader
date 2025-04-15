@@ -9,8 +9,8 @@ if ! command -v yt-dlp &>/dev/null; then
     pip install yt-dlp
 fi
 
-# Ensure ffmpeg is available
-if ! command -v ffmpeg &>/dev/null; then
+# Check and install ffmpeg if missing
+if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
     echo "Installing ffmpeg..."
     pkg install -y ffmpeg
 fi
