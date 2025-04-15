@@ -79,6 +79,52 @@ python: Required for running yt-dlp.
 
 These are automatically installed when you run the tool for the first time.
 
+## 📽️ How to Use
+
+2. Select the platform (e.g., YouTube, Instagram, Twitter, Facebook, or Pinterest) when prompted.
+
+
+3. Paste the video URL when asked:
+
+Paste the YouTube video URL:
+
+
+4. The tool will show you a list of available video and audio formats, such as:
+
+format code  extension  resolution  note
+137          mp4        1080p       video only
+140          m4a        audio only  audio
+137+140      mp4        1080p       video + audio (merge)
+...
+
+
+5. Enter a valid format code like 137+140 to download video with audio merged.
+
+
+6. The tool will automatically:
+
+Download the selected video and audio streams
+
+Merge them using ffmpeg
+
+Save the final file in your current Termux directory
+
+
+7. ✅ Done! Your video is now downloaded with full audio and video.
+
+---
+
+> ⚠️ Important Tips:
+
+Always choose a merged format code like 137+140 to get both video and audio.
+
+If you choose a video-only format (e.g., 137), the output will not have audio.
+
+Make sure ffmpeg is installed correctly. The tool auto-installs it if missing.
+
+---
+
+Need help or found a bug? Check out the Support section below or open an issue.
 
 ---
 
