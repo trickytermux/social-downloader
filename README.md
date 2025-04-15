@@ -58,6 +58,16 @@ chmod +x modules/download.sh
 ./install.sh
 ```
 
+**8. Make Updater Executable**
+```bash
+chmod +x update.sh
+```
+
+**9. Update Tool**
+```bash
+./update.sh
+```
+
 # Dependencies
 
 yt-dlp: For downloading media.
