@@ -9,7 +9,7 @@ if ! command -v yt-dlp &>/dev/null; then
     pip install yt-dlp
 fi
 
-# Install ffmpeg (also provides ffprobe) if missing
+# Install ffmpeg if missing (ffprobe is included)
 if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
     echo "Installing ffmpeg..."
     pkg install -y ffmpeg
@@ -19,17 +19,18 @@ fi
 echo "Paste the $platform video URL:"
 read url
 
-# Fetch and show available video formats
+# Fetch and show available formats
 echo
-echo "Fetching available video formats..."
+echo "Fetching available video and audio formats..."
 yt-dlp -F "$url"
 
-# Let user choose a format code
 echo
-read -p "Enter the format code you want to download (e.g., 137+140 for best video+audio): " format_code
+echo "Choose a format code for both video+audio (example: 137+140 for 1080p + audio)"
+read -p "Enter the format code: " format_code
 
-# Download the selected format
-echo "Downloading video with format code: $format_code..."
+# Download and merge video + audio
+echo
+echo "Downloading video with audio..."
 yt-dlp -f "$format_code" "$url"
 
 echo
